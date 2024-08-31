@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Automation | Add Student</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <h1>Student Data Entry Form</h1>
+    {% comment %} <input type="file" name="bulk_upload" value="Bulk Upload"> {% endcomment %}
+    
+    <form method="post" enctype="multipart/form-data" action="{% url 'add_student_bulk' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Upload Excel File:</td>
+                <td><input type="file" name="bulk_upload" accept=".xls,.xlsx"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Bulk Upload"/>
+    </form>
+
+    <br/><br/>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Student ID:</td>
+                <td><input type="text" name="stu_id"></td>
+            </tr>
+            <tr>
+                <td>Student Name:</td>
+                <td><input type="text" name="stu_name"></td>
+            </tr>
+            <tr>
+                <td>Student City:</td>
+                <td><input type="text" name="stu_city"></td>
+            </tr>
+            <tr>
+                <td>Student Fee:</td>
+                <td><input type="text" name="stu_fee"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>

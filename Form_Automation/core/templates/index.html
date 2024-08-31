@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Automation</title>
+    </head>
+    <body>
+
+        <h1>Student Details</h1>
+        <button>
+        <a href="add_student">Add New Student</a>
+        </button>
+        <button>
+        <a href="/download_students_form">Download Excel File</a>
+        </button>
+
+        <select onchange="handleDownload(this.value)">
+            <option value="">Download Data Option</option>
+            <option value="excel">To Excel File</option>
+            <option value="pdf">To PDF File</option>
+        </select>
+
+        <br><br>
+        <table border="1">
+            <tr>
+                <th>Student Id</th>
+                <th>Studnet Name</th>
+                <th>City</th>
+                <th>Fee</th>
+            </tr>
+            {% for st in student_obj %}
+            <tr>
+                <td>{{st.student_id}}</td>
+                <td>{{st.student_name}}</td>
+                <td>{{st.city}}</td>
+                <td>{{st.fee}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+    <script>
+        function handleDownload(optionValue) {
+            // Check which option is selected
+            if (optionValue === 'excel') {
+                window.location.href = '/download_students_excel'; // Redirect to the Excel download URL
+            } else if (optionValue === 'pdf') {
+                window.location.href = '/download_students_pdf'; // Redirect to the PDF download URL
+            }
+        }
+    </script>
+</html>
